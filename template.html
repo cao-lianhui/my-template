@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html>
+        <head>
+                 <title>jquery-ajax</title>   
+                 <meta charset="UTF-8" />    
+                 <style></style>
+        </head>
+        <body>
+                  <h1>模板引擎</h2>
+                  <div></div>
+                  <!--
+                       模板引擎实现原理:
+                             通过id获取模板中的内容(注:内容为字符串)
+                             调用方式
+                                   找到字符串中特殊的符号.如:标签里的{{name}}用正则表达式
+                                   使用对象对应的属性进行替换
+                             返回字符串
+                  -->
+                  <!--<script src="https://code.jquery.com/jquery-1.8.3.min.js"></script>-->
+                  <!--模板引擎使用-->
+                  <script id="template" type="text/html">
+                        <ul>
+                             <li>{{name}}</li>
+                             <li>{{age}}</li>
+                        </ul>
+                  </script>
+                  <script src="./template.js"></script>
+                  <script>
+                       var data={
+                             name:'哈哈',
+                             age:34
+                       }
+                       var str = document.querySelector('#template').innerHTML;
+                       console.log('数据替换前');
+                       console.log(str);
+                       var result = myTemplate('template',data);
+                       console.log('数据替换后');
+                       console.log(result);
+                       document.querySelector('div').innerHTML = result;
+                  </script>
+                  <script>
+                         //模板引擎 template(模板id,数据)
+
+                        /* //1.获取模板中的内容
+                         var str = document.querySelector('#template').innerHTML;
+                         
+                         //2.准备对象
+                         var data = {
+                               name:'哈哈',
+                               age:34
+                         }
+
+                         //3.使用正则表达式替换模板中内容
+                         //正则表达式使用{{(\w+)}}
+                         //匹配含双大括号的内容,\w:匹配字符,+:匹配至少一个字符,():多次匹配
+                         var reg = /{{(\w+)}}/;
+
+                         //4.检索满足条件的部分
+                         var result = reg.exec(str);
+                         console.log(result);
+                         //{{name}} .....data['name']
+                         str = str.replace(result[0],data[result[1]]);
+                         console.log(str);
+
+                         //再次替换
+                         var result = reg.exec(str);
+                         console.log(result);
+                         //{{age}} .....data['age']
+                         str = str.replace(result[0],data[result[1]]);
+                         console.log(str);*/
+
+                         /*//使用while循环替换,避免重复代码
+                         //获取字符串
+                         var str = document.querySelector('#template').innerHTML;
+                         //定义正则
+                         var reg = /{{(\w+)}}/;
+                         //检索满足条件
+                         var result = reg.exec(str);
+                         //准备对象
+                         var data = {
+                               name:'哈哈',
+                               age:'34'
+                         }
+                         //循环替换直到null为止
+                         while(reg.exec(str)!=null){
+                               //替换字符串
+                               var str = str.replace(result[0],data[result[1]]);
+                               //再次检索
+                               var result = reg.exec(str);
+                         }
+                         //获取结果
+                         console.log(str);*/
+                  </script>
+        </body>
+</html>
