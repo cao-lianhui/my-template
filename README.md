@@ -17,3 +17,7 @@
    @param id:传入的模板id.如<script id="template"></script>传入template
    
    @param:obj:传入的对象数据.如:data={name:'哈哈',age:34}
+   
+
+   
+   
